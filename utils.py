@@ -1,4 +1,4 @@
-import cStringIO
+from io import StringIO
 import PIL.Image
 
 classes = {'abraham_grampa_simpson': 0, 'agnes_skinner': 1, 'apu_nahasapeemapetilon': 2, 
@@ -18,7 +18,7 @@ classes = {'abraham_grampa_simpson': 0, 'agnes_skinner': 1, 'apu_nahasapeemapeti
 
 def decode_img(img_base64):
   decode_str = img_base64.decode("base64")
-  file_like = cStringIO.StringIO(decode_str)
+  file_like = StringIO.StringIO(decode_str)
   img = PIL.Image.open(file_like)
   # rgb_img[c, r] is the pixel values.
   rgb_img = img.convert("RGB")
